@@ -1,4 +1,4 @@
-package org.o7planning.sbjdbc;
+package org.o7planning.sbjdbc.model;
 
 public class Sach {
 	private String MaSach;

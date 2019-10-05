@@ -1,4 +1,4 @@
-package org.o7planning.sbjdbc;
+package org.o7planning.sbjdbc.model;
 
 public class CB_GV extends BanDoc implements User{
 	private String PhongBan;
