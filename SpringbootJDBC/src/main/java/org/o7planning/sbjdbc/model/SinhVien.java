@@ -1,15 +1,16 @@
-package org.o7planning.sbjdbc;
+package org.o7planning.sbjdbc.model;
 
 public class SinhVien  extends BanDoc implements User  {
 	private String MaKhoa;
 	private String Lop;
-	private String UserName;
+	private String Username;
 	private String Password;
-	public SinhVien(String maBanDoc, String hoTen, String ngaySinh, String gioiTinh, String diaChi,String maKhoa, String lop) {
+	public SinhVien(String maBanDoc, String hoTen, String ngaySinh, String gioiTinh, String diaChi,String maKhoa, String lop,String user,String pass) {
 		super(maBanDoc, hoTen, ngaySinh,  gioiTinh, diaChi);
 		MaKhoa = maKhoa;
 		Lop = lop;
-		
+		Username=user;
+		Password=pass;
 	}
 	
 	public String getMaKhoa() {
@@ -29,11 +30,11 @@ public class SinhVien  extends BanDoc implements User  {
 	}
 
 	public String getUserName() {
-		return UserName;
+		return Username;
 	}
 
 	public void setUserName(String userName) {
-		UserName = userName;
+		Username = userName;
 	}
 
 	public String getPassword() {
