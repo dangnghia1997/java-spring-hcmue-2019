@@ -14,19 +14,18 @@ public class SinhVienMapper implements RowMapper<SinhVien>{
 
 @Override
 public SinhVien mapRow(ResultSet rs, int rowNum) throws SQLException {
-
-
-String maBanDoc = rs.getString("MaBanDoc");
-String hoTen = rs.getString("HoTen");
-String gioiTinh = rs.getString("GioiTinh");
-String diaChi = rs.getString("DiaChi");
-String maKhoa = rs.getString("MaKhoa");
-String lop = rs.getString("Lop");
-String ngaySinh  = rs.getString("NgaySinh");
-String userName = rs.getString("Username");
-String pass = rs.getString("Password");
-
-return new SinhVien(maBanDoc,hoTen,ngaySinh,gioiTinh,diaChi,maKhoa,lop,userName,pass);
+	
+	String maBanDoc = rs.getString("MaBanDoc");
+	String hoTen = rs.getString("HoTen");
+	String gioiTinh = rs.getString("GioiTinh");
+	String diaChi = rs.getString("DiaChi");
+	String maKhoa = rs.getString("MaKhoa");
+	String lop = rs.getString("Lop");
+	String ngaySinh  = rs.getString("NgaySinh");
+	String userName = rs.getString("Username");
+	String pass = rs.getString("Password");
+	
+	return new SinhVien(maBanDoc,hoTen,ngaySinh,gioiTinh,diaChi,maKhoa,lop,userName,pass);
 }
 
 }
