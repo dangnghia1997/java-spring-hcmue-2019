@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 @Repository
 public class PublisherDao  extends JdbcDaoSupport{
+	
 	@Autowired
     public PublisherDao(DataSource dataSource) {
         this.setDataSource(dataSource);
