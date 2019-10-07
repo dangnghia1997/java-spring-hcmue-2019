@@ -51,16 +51,20 @@ public class AppController {
     private PublisherDao pubDao;
 	
 	
-	
-	@RequestMapping("/about.html")
+	@RequestMapping(value= {"/", "/index"})
+	public String index() {
+		return "index";
+	}
+	@RequestMapping("/about")
 	public String ThongTin() {
 		return "about";
 	}
-	@RequestMapping("/muonsach.html")
+	@RequestMapping("/muonsach")
 	public String MuonSach() {
 		return "muonsach";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping("/contact.html")
 	public String LienLac() {
 		return "contact";
@@ -68,6 +72,14 @@ public class AppController {
 	@RequestMapping("/login.html")
 	public String DangKy(Model model) {
 		 model.addAttribute("us", new users());
+=======
+	@RequestMapping("/contact")
+	public String LienLac() {
+		return "contact";
+	}
+	@RequestMapping("/login")
+	public String DangKy() {
+>>>>>>> 2fe97efc400f347b2b1ef6f802dbf764226463cd
 		return "login";
 	}
 	//Xem chi tiet sach
@@ -79,14 +91,9 @@ public class AppController {
 		return "chitiet";
 	}
 	
-	
-	@RequestMapping("/job-listings.html")//Trả về trang phan trang để load sách
-	public String Index() {
-		return "redirect:book/";
-	}
 	//Load trang tu sach
-	@RequestMapping("/book")
-	public String index(Model model,HttpServletRequest request
+	@RequestMapping(value= {"/book"})
+	public String showBook(Model model,HttpServletRequest request
 			,RedirectAttributes redirect) {
 		request.getSession().setAttribute("booklist", null);
 		
@@ -127,7 +134,7 @@ public class AppController {
 		model.addAttribute("baseUrl", baseUrl);
 		model.addAttribute("sachs", pages);
 
-		return "job-listings";
+		return "book_lists";
 	}
 	//CRUDbook
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)  

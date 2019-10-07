@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
   <head>
@@ -258,3 +259,117 @@
      
   </body>
 </html>
+=======
+<div th:replace="partials/header"></div>
+<script>
+	   function ValidateEmail(inputText)
+	{
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(inputText.value.match(mailformat))
+	{
+	
+	return true;
+	}
+	else
+	{
+	alert("You have entered an invalid email address!");
+	
+	return false;
+	}
+	}	
+
+</script>
+<section class="site-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 mb-5">
+				<h2 class="mb-4">Đăng ký library</h2>
+				<form class="p-4 border rounded" name="form1" action="xuly.php"
+					method="post"
+					onsubmit="return ValidateEmail(document.form1.txtEmail)">
+					<div class="row form-group">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Họ Tên</label> <input
+								type="text" id="fname" name="txtLaName" class="form-control"
+								placeholder="Last Name" required>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Username</label> <input
+								type="text" id="fname" name="txtFiName" class="form-control"
+								placeholder="First Name" required>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Email</label> <input
+								type="text" id="email" name="txtEmail" class="form-control"
+								placeholder="Email address" required>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Mật khẩu</label> <input
+								type="password" id="fname" name="txtMK" class="form-control"
+								placeholder="Password" required>
+						</div>
+					</div>
+					<div class="row form-group mb-4">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Nhập lại mật khẩu</label> <input
+								type="password" id="fname" name="txtreMK" class="form-control"
+								placeholder="Re-type Password" required>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<input type="submit" value="Đăng ký"
+								class="btn px-4 btn-primary text-white">
+						</div>
+
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<div name="kq"></div>
+						</div>
+
+					</div>
+
+
+				</form>
+			</div>
+			<div class="col-lg-6">
+				<h2 class="mb-4">Đăng nhập</h2>
+				<form action="xulydn.php" class="p-4 border rounded" method="post">
+
+					<div class="row form-group">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Email</label> <input
+								type="text" id="fname" name="txtmail" class="form-control"
+								placeholder="Email address">
+						</div>
+					</div>
+					<div class="row form-group mb-4">
+						<div class="col-md-12 mb-3 mb-md-0">
+							<label class="text-black" for="fname">Mật khẩu</label> <input
+								type="password" id="fname" name="txtpass" class="form-control"
+								placeholder="Password"> <a href="resetpassword.php">Quên
+								mật khẩu?</a>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<input type="submit" value="Đăng nhập"
+								class="btn px-4 btn-primary text-white">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<div th:replace="partials/footer"></div>
+>>>>>>> 2fe97efc400f347b2b1ef6f802dbf764226463cd
