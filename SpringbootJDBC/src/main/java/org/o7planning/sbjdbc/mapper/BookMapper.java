@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.o7planning.sbjdbc.model.books;
-import org.o7planning.sbjdbc.model.SinhVien;
+import org.o7planning.sbjdbc.model.users;
 import org.springframework.jdbc.core.RowMapper;
 
 public class BookMapper implements RowMapper<books> {

@@ -9,12 +9,15 @@ import javax.validation.Valid;
 import org.o7planning.sbjdbc.dao.AuthorDao;
 import org.o7planning.sbjdbc.dao.BookDao;
 import org.o7planning.sbjdbc.dao.PublisherDao;
+import org.o7planning.sbjdbc.dao.UsersDao;
 import org.o7planning.sbjdbc.model.author;
 import org.o7planning.sbjdbc.model.books;
 import org.o7planning.sbjdbc.model.publisher;
+import org.o7planning.sbjdbc.model.users;
 import org.o7planning.sbjdbc.services.AuthorServices;
 import org.o7planning.sbjdbc.services.PublisherServices;
 import org.o7planning.sbjdbc.services.SachServices;
+import org.o7planning.sbjdbc.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -41,6 +44,9 @@ public class AppController {
     private AuthorDao authorDao;
 	@Autowired
     private PublisherServices pubsv;
+	
+	@Autowired
+    private UserService ussv;
 	@Autowired
     private PublisherDao pubDao;
 	
@@ -55,14 +61,13 @@ public class AppController {
 		return "muonsach";
 	}
 	
-	
-	
 	@RequestMapping("/contact.html")
 	public String LienLac() {
 		return "contact";
 	}
 	@RequestMapping("/login.html")
-	public String DangKy() {
+	public String DangKy(Model model) {
+		 model.addAttribute("us", new users());
 		return "login";
 	}
 	//Xem chi tiet sach
@@ -226,6 +231,28 @@ public class AppController {
 			redirect.addFlashAttribute("success", "Deleted employee successfully!");
 			return "redirect:/CRUDpublisher";
 		}
-	 
+	 //login register user
+	 @RequestMapping(value="/saveuser",method = RequestMethod.POST)  
+	  public String savepub(@Valid users us, BindingResult result, RedirectAttributes redirect) {  
+		 if (result.hasErrors()) {
+				return "index";
+			}
+		
+		   
+		    	
+		 String email=us.getEmail();
+		 Optional<users> userEdit = ussv.finduserByemail(email);  
+		    if(userEdit.isPresent()==false) {
+		    	if(us.checkEmail())
+		    	ussv.saveUser(us);
+		    	 redirect.addFlashAttribute("success", "Saved user successfully!");
+		 	    return "index";  
+		    }
+		    	redirect.addFlashAttribute("fail", "Please choose another email");
+		    	return "redirect:/login.html";
+		    
+		 
+	   
+	  }  
 
 }

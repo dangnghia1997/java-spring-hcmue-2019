@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
   <head>
     <title>JobBoard &mdash; Free Website Template by Free-Template.co</title>
-    <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Free-Template.co" />
+    
+    
     <link rel="shortcut icon" href="ftco-32x32.png">
     
     <link rel="stylesheet" href="css/custom-bs.css">
@@ -24,22 +26,7 @@
   </head>
   <body id="top">
   <script>
-   function ValidateEmail(inputText)
-{
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(inputText.value.match(mailformat))
-{
-
-return true;
-}
-else
-{
-alert("You have entered an invalid email address!");
-
-return false;
-}
-}
-
+  
   </script>
   <div id="overlayer"></div>
   <div class="loader">
@@ -115,37 +102,34 @@ return false;
         <div class="row">
           <div class="col-lg-6 mb-5">
             <h2 class="mb-4">Đăng ký library</h2>
-            <form  class="p-4 border rounded" name="form1" action="xuly.php" method="post" onsubmit="return ValidateEmail(document.form1.txtEmail)">
+            <form   th:object="${us}" th:action="@{/saveuser}"  action="#" method="post" >
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Họ Tên</label>
-                  <input type="text" id="fname" name ="txtLaName" class="form-control" placeholder="Last Name" required>
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Username</label>
-                  <input type="text" id="fname" name ="txtFiName" class="form-control" placeholder="First Name" required>
+                  <label class="text-black"
+
+                  th:for="firstname">Họ </label>
+                  <input class="form-control" type="text" th:field="*{firstname}"  placeholder="First Name" required>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Email</label>
-                  <input type="text" id="email" name ="txtEmail" class="form-control" placeholder="Email address"  required>
+                  <label class="text-black" th:for="lastname">Tên </label>
+                  <input class="form-control" type="text" th:field="*{lastname}"  placeholder="Last Name" required>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Mật khẩu</label>
-                  <input type="password" id="fname" name="txtMK" class="form-control" placeholder="Password" required>
+                  <label class="text-black" th:for="email">Email</label>
+                  <input class="form-control" type="text" th:field="*{email}" placeholder="email" required>
                 </div>
               </div>
-              <div class="row form-group mb-4">
+              <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Nhập lại mật khẩu</label>
-                  <input type="password" id="fname" name="txtreMK" class="form-control" placeholder="Re-type Password" required>
+                  <label class="text-black" th:for="password">Password</label>
+                  <input class="form-control" type="text" th:field="*{password}"   placeholder="password"  required>
                 </div>
               </div>
+              
 
               <div class="row form-group">
                 <div class="col-md-12">
@@ -165,19 +149,19 @@ return false;
           </div>
           <div class="col-lg-6">
             <h2 class="mb-4">Đăng nhập </h2>
-            <form action="xulydn.php" class="p-4 border rounded" method="post">
+            <form th:object="${us}" th:action="@{/loginuser}"  method="post">
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname" >Email</label>
-                  <input type="text" id="fname" name="txtmail" class="form-control" placeholder="Email address">
+                  <label class="text-black" th:for="email" >Email</label>
+                  <input type="text" th:field="*{lastname}"  placeholder="Email address">
                 </div>
               </div>
               <div class="row form-group mb-4">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Mật khẩu</label>
-                  <input type="password" id="fname" name="txtpass" class="form-control" placeholder="Password">
-                  <a href="resetpassword.php">Quên mật khẩu?</a>
+                  <label class="text-black" th:for="email">Mật khẩu</label>
+                  <input type="password" class="form-control" th:field="*{password}"  placeholder="Password">
+                  <a href="resetpassword.html">Quên mật khẩu?</a>
                 </div>
               </div>
 
