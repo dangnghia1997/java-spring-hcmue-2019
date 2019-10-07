@@ -27,6 +27,9 @@ public class books {
 		this.number = number;
 		this.image = image;
 	}
+	public books() {
+		super();
+	}
 	public Integer getId() {
 		return id;
 	}

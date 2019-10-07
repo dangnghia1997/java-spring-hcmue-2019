@@ -24,7 +24,7 @@ String type = rs.getString("type");
 int number = rs.getInt("number");
 
 
-return new books(id,id_au,id_pub,bookname,image,number,type);
+return new books(id,id_au,id_pub,bookname,type,number,image);
 }
 
 

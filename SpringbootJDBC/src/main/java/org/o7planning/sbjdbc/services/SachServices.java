@@ -13,7 +13,7 @@ public interface SachServices {
 
     Optional<books> findBookById(Integer id);
 
-    void save(books contact);
+    void saveBook(books contact);
 
-    void delete(int id);
+    void deleteBook(Integer  id);
 }

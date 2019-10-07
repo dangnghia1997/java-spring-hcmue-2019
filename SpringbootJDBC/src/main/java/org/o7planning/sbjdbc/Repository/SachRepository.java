@@ -9,5 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface SachRepository extends CrudRepository<books,Integer>{
 	List<books> findBybooknameLike(String book);
 	Optional<books> findById(Integer q);
-	void delete(int q);
+	void deleteById(Integer q);
+	
 }

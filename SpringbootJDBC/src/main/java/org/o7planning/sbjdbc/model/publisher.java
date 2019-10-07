@@ -1,23 +1,28 @@
 package org.o7planning.sbjdbc.model;
 
 public class publisher {
-      private int id;
-      private String publisher_name;
+	@org.springframework.data.annotation.Id
+      private Integer id;
+      private String publishername;
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getPublisher_name() {
-		return publisher_name;
+	public String getPublishername() {
+		return publishername;
 	}
-	public void setPublisher_name(String publisher_name) {
-		this.publisher_name = publisher_name;
+	public void setPublishername(String publisher_name) {
+		this.publishername = publisher_name;
 	}
-	public publisher(String publisher_name) {
+	public publisher() {
 		super();
-		this.publisher_name = publisher_name;
+	}
+	public publisher(Integer id,String publisher_name) {
+		super();
+		this.id=id;
+		this.publishername = publisher_name;
 	}
       
 }

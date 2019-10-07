@@ -30,12 +30,12 @@ public class AuthorServiceImpl implements AuthorServices{
 
 
     @Override
-    public void save(author contact) {
+    public void saveAuthor(author contact) {
      authorRepository.save(contact);
     }
 
     @Override
-    public void delete(int id) {
-    	authorRepository.delete(id);
+    public void deleteAuthor(Integer id) {
+    	authorRepository.deleteById(id);
     }
 }

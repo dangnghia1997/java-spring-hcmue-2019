@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Edit User</title>  
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>  
+</head>  
+<body>  
+<div class="col-3"></div>  
+<div class="container col-6">  
+    <h1>Edit Book</h1>  
+    <form th:object="${us}" th:action="@{save}" action="#" method="post">  
+        <input type="hidden" th:field="*{id}">  
+        <div>  
+                <label  th:for="id_author">Mã tác giả</label>  
+                <input type="text" th:field="*{id_author}" class="form-control" placeholder="id_publisher"/>  
+            </div> 
+            <div>  
+                <label  th:for="id_publisher">Mã nhà xuất bản</label>  
+                <input type="text" th:field="*{id_publisher}" class="form-control" placeholder="id_publisher"/>  
+            </div>  
+             <div>  
+                <label  th:for="bookname">Tên sách</label>  
+                <input type="text" th:field="*{bookname}" class="form-control" placeholder="bookname"/>  
+            </div> 
+            <div>  
+                <label th:for="type">Loại</label>  
+                <input type="text" th:field="*{type}" class="form-control" placeholder="type"/>  
+            </div> 
+            <div>  
+                <label  th:for="number">Số lượng</label>  
+                <input type="text" th:field="*{number}" class="form-control" placeholder="number"/>  
+            </div> 
+            <div>  
+                <label  th:for="image">Hình</label>  
+                <input type="text" th:field="*{image}" class="form-control" placeholder="image"/>  
+            </div> 
+            <div style="clear: both; display: block; height: 10px"></div>  
+            <input type="submit" class="btn btn-success" value="Save"/>  
+    </form>  
+</div>  
+</body>  
+</html>

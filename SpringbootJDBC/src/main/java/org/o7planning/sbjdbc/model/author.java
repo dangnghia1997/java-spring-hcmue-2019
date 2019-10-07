@@ -4,6 +4,10 @@ public class author {
 	@org.springframework.data.annotation.Id
 	private Integer id;	
 	private String authorname;
+	public author() {
+		super();
+		
+	}
 	public author(Integer id,String name) {
 		this.id=id;
 		this.authorname=name;
@@ -12,7 +16,7 @@ public class author {
 	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getAuthorname() {

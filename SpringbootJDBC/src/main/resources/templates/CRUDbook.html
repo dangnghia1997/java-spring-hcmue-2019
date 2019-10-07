@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">  
+<head>  
+    <title>Book List</title>  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>  
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>  
+</head>  
+<body>  
+<div class="col-3"></div>  
+<div class="container col-6">  
+    <h1>Quản Lý Sách</h1>  
+    <table class="table table-active">  
+        <tr>  
+             <th>Hình</th>  
+            <th>Id</th>  
+            <th>Tên Sách</th>  
+            <th>Thể Loại</th>  
+            <th>Mã Nhà Xuất Bản</th> 
+            <th>Mã Tác Giả</th> 
+             <th>Số Lượng</th>   
+              
+        </tr>  
+        <tr th:each="us : ${books}">  
+              <td><img width="100" height="100" th:src="${us.image}"/></td>  
+            <td th:text="${us.id}"></td>  
+            <td th:text="${us.bookname}"></td>  
+            <td th:text="${us.type}"></td>  
+            <td th:text="${us.id_author}"></td>  
+            <td th:text="${us.id_publisher}"></td>  
+            <td th:text="${us.number}"></td> 
+            <td>  
+                <a th:href="@{/edit?id={id}(id=${us.id})}" class="btn btn-primary">Edit</a>  
+                <a th:href="@{/delete?id={id}(id=${us.id})}" class="btn btn-danger">Delete</a>  
+            </td>  
+        </tr>  
+    </table>  
+    <a href="/add" class="btn btn-success">Add User</a>  
+</div>  
+</body>  
+</html>

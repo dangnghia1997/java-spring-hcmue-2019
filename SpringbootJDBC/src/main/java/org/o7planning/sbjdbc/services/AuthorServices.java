@@ -9,6 +9,6 @@ public interface AuthorServices {
 	Iterable<author> findAll();
     List<author> search(String q);
     Optional<author> findAuthorById(Integer id);
-    void save(author contact);
-    void delete(int id);
+    void saveAuthor(author contact);
+    void deleteAuthor(Integer id);
 }

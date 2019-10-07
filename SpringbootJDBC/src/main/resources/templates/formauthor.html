@@ -1,0 +1,24 @@
+<!DOCTYPE html>  
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Edit User</title>  
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>  
+</head>  
+<body>  
+<div class="col-3"></div>  
+<div class="container col-6">  
+    <h1>Add Author</h1>  
+    <form th:object="${us}" th:action="@{/saveauthor}" action="#" method="post">  
+        
+            <div>  
+                <label  th:for="authorname">Tên tác giả</label>  
+                <input type="text" th:field="*{authorname}" class="form-control" placeholder="authorname"/>  
+            </div>  
+              
+            <div style="clear: both; display: block; height: 10px"></div>  
+            <input type="submit" class="btn btn-success" value="Save"/>  
+    </form>  
+</div>  
+</body>  
+</html>

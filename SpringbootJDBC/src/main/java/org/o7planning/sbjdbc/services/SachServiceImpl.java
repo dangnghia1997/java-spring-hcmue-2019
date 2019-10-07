@@ -33,12 +33,12 @@ public class SachServiceImpl implements SachServices
 
 
     @Override
-    public void save(books contact) {
+    public void saveBook(books contact) {
      sachRepository.save(contact);
     }
 
     @Override
-    public void delete(int id) {
-    	sachRepository.delete(id);
+    public void deleteBook(Integer id) {
+    	sachRepository.deleteById(id);
     }
 }

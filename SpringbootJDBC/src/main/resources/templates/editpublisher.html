@@ -1,0 +1,23 @@
+<!DOCTYPE html>  
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Edit Publisher</title>  
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>  
+</head>  
+<body>  
+<div class="col-3"></div>  
+<div class="container col-6">  
+    <h1>Edit Author</h1>  
+    <form th:object="${us}" th:action="@{savepub}" action="#" method="post">  
+        <input type="hidden" th:field="*{id}">  
+        <div>  
+                <label  th:for="publishername">Tên nhà xuất bản</label>  
+                <input type="text" th:field="*{publishername}" class="form-control" placeholder="publishername"/>  
+            </div> 
+            <div style="clear: both; display: block; height: 10px"></div>  
+            <input type="submit" class="btn btn-success" value="Save"/>  
+    </form>  
+</div>  
+</body>  
+</html>
