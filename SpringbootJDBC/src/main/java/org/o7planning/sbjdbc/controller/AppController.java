@@ -64,22 +64,13 @@ public class AppController {
 		return "muonsach";
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping("/contact.html")
-	public String LienLac() {
-		return "contact";
-	}
-	@RequestMapping("/login.html")
-	public String DangKy(Model model) {
-		 model.addAttribute("us", new users());
-=======
+
 	@RequestMapping("/contact")
 	public String LienLac() {
 		return "contact";
 	}
 	@RequestMapping("/login")
 	public String DangKy() {
->>>>>>> 2fe97efc400f347b2b1ef6f802dbf764226463cd
 		return "login";
 	}
 	//Xem chi tiet sach
