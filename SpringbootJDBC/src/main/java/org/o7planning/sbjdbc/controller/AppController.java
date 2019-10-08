@@ -69,10 +69,13 @@ public class AppController {
 	public String LienLac() {
 		return "contact";
 	}
+	
 	@RequestMapping("/login")
-	public String DangKy() {
+	public String DangKy(Model model) {
+		model.addAttribute("us", new users());
 		return "login";
 	}
+	
 	//Xem chi tiet sach
 	@RequestMapping(value="/chitiet/{someId}", method = RequestMethod.GET)
 	public String showChiTiet(@PathVariable Integer someId,Model model) {
@@ -92,6 +95,7 @@ public class AppController {
 			redirect.addFlashAttribute("success",model.asMap().get("success").toString());
 		return "redirect:/book/page/1";
 	}
+	
 	//Phan trang de load sach
 	@GetMapping("/book/page/{pageNumber}")
 	public String showEmployeePage(HttpServletRequest request, 
@@ -127,6 +131,7 @@ public class AppController {
 
 		return "book_lists";
 	}
+	
 	//CRUDbook
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)  
 	  public String editUser(@RequestParam("id") Integer bookId, Model model) {  
@@ -134,8 +139,9 @@ public class AppController {
 	    userEdit.ifPresent(user -> model.addAttribute("us", user));  
 	    return "EditBook";  
 	  }  
-	 @RequestMapping(value = "/save", method = RequestMethod.POST)  
-	  public String save(@Valid books us, BindingResult result, RedirectAttributes redirect) {  
+	 
+	@RequestMapping(value = "/save", method = RequestMethod.POST)   
+	 public String save(@Valid books us, BindingResult result, RedirectAttributes redirect) {  
 		 if (result.hasErrors()) {
 				return "form";
 			}
@@ -143,8 +149,8 @@ public class AppController {
 	    redirect.addFlashAttribute("success", "Saved book successfully!");
 	    return "redirect:/CRUDbook";  
 	  }  
-	 @RequestMapping( "/CRUDbook")  
-	  public String load(Model model) {  
+	 @RequestMapping( "/CRUDbook")   
+	 public String load(Model model) {  
 			List<books> list =(List<books>) sachDao.getSach();
 			model.addAttribute("books",list);
 			return "CRUDbook";
@@ -229,28 +235,29 @@ public class AppController {
 			redirect.addFlashAttribute("success", "Deleted employee successfully!");
 			return "redirect:/CRUDpublisher";
 		}
+	 
 	 //login register user
-	 @RequestMapping(value="/saveuser",method = RequestMethod.POST)  
-	  public String savepub(@Valid users us, BindingResult result, RedirectAttributes redirect) {  
-		 if (result.hasErrors()) {
-				return "index";
-			}
-		
-		   
-		    	
-		 String email=us.getEmail();
-		 Optional<users> userEdit = ussv.finduserByemail(email);  
-		    if(userEdit.isPresent()==false) {
-		    	if(us.checkEmail())
-		    	ussv.saveUser(us);
-		    	 redirect.addFlashAttribute("success", "Saved user successfully!");
-		 	    return "index";  
-		    }
-		    	redirect.addFlashAttribute("fail", "Please choose another email");
-		    	return "redirect:/login.html";
-		    
-		 
-	   
-	  }  
+	 @RequestMapping(value="/saveuser",method = RequestMethod.POST)
+     public String saveuser(@Valid users us, BindingResult result, RedirectAttributes redirect,Model model) {
+        String email=us.getEmail();
+        Optional<users> userEdit = ussv.finduserByemail(email);
+           if(userEdit.isPresent()==false) {
+               if(us.checkEmail()) {
+               us.setRole(0);
+               ussv.saveUser(us);
+               model.addAttribute("us", us);
+               
+               }
+               redirect.addFlashAttribute("success", "Saved user successfully!");     
+               return "rgsucess";
+                
+           }else {
+        	   model.addAttribute("us", new users());
+               redirect.addFlashAttribute("fail", "Please choose another email");
+               return "rgfailed";
+                
+           }
+	 }   
+           
 
 }

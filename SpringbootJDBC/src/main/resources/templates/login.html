@@ -1,4 +1,4 @@
-<div th:replace="partials/header"></div>
+<!-- <div th:replace="partials/header"></div>
 <script>
 	   function ValidateEmail(inputText)
 	{
@@ -109,4 +109,75 @@
 		</div>
 	</div>
 </section>
-<div th:replace="partials/footer"></div>
+<div th:replace="partials/footer"></div> -->
+<div th:replace="partials/header"></div>
+   <section class="site-section">
+     <div class="container">
+       <div class="row">
+         <div class="col-lg-6 mb-5">
+           <h2 class="mb-4">Đăng ký library</h2>
+           <form   th:object="${us}" th:action="@{/saveuser}"  action="#" method="post" >
+             <div class="row form-group">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black"
+                 th:for="firstname">Họ </label>
+                 <input class="form-control" type="text" th:field="*{firstname}"  placeholder="First Name" required>
+               </div>
+             </div>
+             <div class="row form-group">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black" th:for="lastname">Tên </label>
+                 <input class="form-control" type="text" th:field="*{lastname}"  placeholder="Last Name" required>
+               </div>
+             </div>
+             <div class="row form-group">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black" th:for="email">Email</label>
+                 <input class="form-control" type="text" th:field="*{email}" placeholder="email" required>
+               </div>
+             </div>
+             <div class="row form-group">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black" th:for="password">Password</label>
+                 <input class="form-control" type="password" th:field="*{password}"   placeholder="password"  required>
+               </div>
+             </div>
+             <div class="row form-group">
+               <div class="col-md-12">
+                 <input type="submit" value="Đăng ký" class="btn px-4 btn-primary text-white" >
+               </div>
+             </div>
+              <div class="row form-group">
+               <div class="col-md-12">
+                <div name="kq"></div>
+               </div>
+             </div>
+           </form>
+         </div>
+         <div class="col-lg-6">
+           <h2 class="mb-4">Đăng nhập </h2>
+           <form th:object="${us}" th:action="@{/loginuser}"  method="post">
+             <div class="row form-group">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black" th:for="email" >Email</label>
+                 <input class="form-control" type="text" th:field="*{lastname}"  placeholder="Email address">
+               </div>
+             </div>
+             <div class="row form-group mb-4">
+               <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="text-black" th:for="email">Mật khẩu</label>
+                 <input type="password" class="form-control" th:field="*{password}"  placeholder="Password">
+                 <a href="resetpassword.html">Quên mật khẩu?</a>
+               </div>
+             </div>
+             <div class="row form-group">
+               <div class="col-md-12">
+                 <input type="submit" value="Đăng nhập" class="btn px-4 btn-primary text-white">
+               </div>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </section>
+ <div th:replace="partials/footer"></div>
